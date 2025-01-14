@@ -29,8 +29,9 @@ public class EmployeeService {
     public EmployeeRequestDto createEmployee(EmployeeDto employeeDto , MultipartFile profilePicture ) throws IOException {
 
         Employee employee = objectMapper.convertValue(employeeDto,Employee.class);
+        employee.setFirstName(employeeDto.getFirstName());
+        employee.setMiddleName(employeeDto.getMiddleName());
         EmployeeProfilePic picture=new EmployeeProfilePic();
-
         picture.setFileName(randomUUID().toString());
         picture.setFileType(profilePicture.getContentType());
         picture.setData(profilePicture.getBytes());
