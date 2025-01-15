@@ -1,7 +1,6 @@
 package tech.izak.Microservice.Loan;
 
 import jakarta.persistence.*;
-import tech.izak.Microservice.Employee.Entities.Employee;
 
 @Entity
 @Table(name = "Loan")

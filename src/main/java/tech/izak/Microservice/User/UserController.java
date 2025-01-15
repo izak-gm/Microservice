@@ -1,4 +1,4 @@
 package tech.izak.Microservice.User;
 
-public interface userRepository {
+public class UserController {
 }

@@ -3,6 +3,7 @@ package tech.izak.Microservice.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -14,8 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class user implements UserDetails {
-  private static final String AUTHORITIES_DELIMITER="::";
+@Table(name = "-user")
+public class User implements UserDetails {
 
   @Id
   @SequenceGenerator(
@@ -29,14 +30,16 @@ public class user implements UserDetails {
   )  private int id;
   private String username;
   private String password;
-  private String authorities;
   private String phoneNumber;
   private String gender;
   private String dob;
+  private String email;
+  @Enumerated(EnumType.STRING)
+  private Auth auth;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of();
+    return List.of(new SimpleGrantedAuthority(auth.name()));
   }
 
   @Override
