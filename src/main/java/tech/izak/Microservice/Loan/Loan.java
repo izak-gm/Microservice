@@ -1,8 +1,10 @@
 package tech.izak.Microservice.Loan;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "Loan")
 public class Loan {
   @Id
@@ -27,10 +29,10 @@ public class Loan {
   private Integer loanTypeId;
   private String loanStatus;
 
-  public Integer getPrincipleAmount() {
-    return principleAmount;
-  }
-
+//  public Integer getPrincipleAmount() {
+//    return principleAmount;
+//  }
+//
   public void setPrincipleAmount(Integer principleAmount) {
     this.principleAmount = principleAmount;
   }

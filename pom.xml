@@ -119,7 +119,12 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.12.5</version>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>spring-boot-dotenv</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+	</dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
