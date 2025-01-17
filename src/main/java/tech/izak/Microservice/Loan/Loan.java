@@ -29,10 +29,9 @@ public class Loan {
   private Integer loanTypeId;
   private String loanStatus;
 
-//  public Integer getPrincipleAmount() {
-//    return principleAmount;
-//  }
-//
+  public Integer getPrincipleAmount() {
+    return principleAmount;
+  }
   public void setPrincipleAmount(Integer principleAmount) {
     this.principleAmount = principleAmount;
   }
