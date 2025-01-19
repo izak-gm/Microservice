@@ -28,7 +28,8 @@ public class User implements UserDetails {
         strategy = GenerationType.SEQUENCE,
         generator = "user_sequence"
   )  private int id;
-  private String username;
+  private String firstname;
+  private String lastname;
   private String password;
   private String phoneNumber;
   private String gender;

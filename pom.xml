@@ -96,7 +96,8 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.30</version>
+			<scope>provided</scope>
 		</dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
@@ -118,11 +119,6 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.12.5</version>
-		</dependency>
-		<dependency>
-			<groupId>io.github.cdimascio</groupId>
-			<artifactId>spring-boot-dotenv</artifactId>
-			<version>3.2.1</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -153,5 +149,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
