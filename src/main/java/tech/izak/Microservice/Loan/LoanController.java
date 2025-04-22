@@ -1,10 +1,11 @@
 package tech.izak.Microservice.Loan;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "apply/loan")
+@RequestMapping(path = "loan")
 public class LoanController {
 
   public final LoanService loanService;
@@ -13,9 +14,9 @@ public class LoanController {
     this.loanService = loanService;
   }
 
- @PostMapping()
+ @PostMapping("apply")
   public LoanDto applyLoan(@RequestBody LoanDto loanDto){
-    LoanDto loandto= new LoanDto();
+//    LoanDto loandto= new LoanDto();
 //    loanDto.setPrincipleAmount(loandto.getPrincipleAmount());
 //    loanDto.setOutstandingBalance(loanDto.getOutstandingBalance());
 //    loanDto.setUserid(loanDto.getUserid());
@@ -23,7 +24,7 @@ public class LoanController {
 //    loanDto.setLoanTypeId(loandto.getLoanTypeId());
 //
     return loanService.applyLoan(loanDto);
-//    return ResponseEntity.ok(loanDto);
+//    return ResponseEntity.ok(loanService.applyLoan(loanDto));
   }
 
 }

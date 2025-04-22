@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "-user")
+@Table(name = "_user")
 public class User implements UserDetails {
 
   @Id
@@ -37,6 +37,8 @@ public class User implements UserDetails {
   private String email;
   @Enumerated(EnumType.STRING)
   private Auth auth;
+  private final boolean isEnabled=true;
+  private final boolean isAccountNonLocked=true;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -45,12 +47,12 @@ public class User implements UserDetails {
 
   @Override
   public String getPassword() {
-    return "";
+    return password;
   }
 
   @Override
   public String getUsername() {
-    return "";
+    return email;
   }
 
   @Override

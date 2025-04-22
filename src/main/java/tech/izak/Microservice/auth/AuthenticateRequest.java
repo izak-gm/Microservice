@@ -1,31 +1,9 @@
 package tech.izak.Microservice.auth;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class AuthenticateRequest {
-  private String email;
-  String password;
 
-  public String getEmail() {
-    return email;
-  }
+public record AuthenticateRequest(String email, String password) {
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
 }

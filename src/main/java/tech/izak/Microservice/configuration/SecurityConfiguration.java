@@ -22,12 +22,17 @@ public class SecurityConfiguration {
     this.authenticationProvider = authenticationProvider;
   }
 
+  private static final String [] WHITE_LIST_URL={
+        "/api/v1/auth/register",
+        "/api/v1/auth/login"
+  };
+
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-    httpSecurity
+    return httpSecurity
           .csrf(AbstractHttpConfigurer::disable)
           .authorizeHttpRequests(auth ->auth
-                .requestMatchers("api/v1/auth/**")
+                .requestMatchers(WHITE_LIST_URL)
                 .permitAll()
                 .anyRequest().authenticated()
           )
@@ -35,8 +40,10 @@ public class SecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
           )
           .authenticationProvider(authenticationProvider)
-          .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
-    return httpSecurity.build();
+          .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+          .build();
+//    return httpSecurity.build();
   }
+
+
 }

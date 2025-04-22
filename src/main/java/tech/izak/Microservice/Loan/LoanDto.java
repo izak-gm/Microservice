@@ -1,8 +1,5 @@
 package tech.izak.Microservice.Loan;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,7 +37,7 @@ public class LoanDto {
         return processingFee;
     }
 
-    public void setProcessingFee(Double processingFee) {
+    public void appsetProcessingFee(Double processingFee) {
         this.processingFee = processingFee;
     }
 

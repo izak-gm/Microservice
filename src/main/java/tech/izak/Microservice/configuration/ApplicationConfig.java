@@ -1,6 +1,5 @@
 package tech.izak.Microservice.configuration;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +16,8 @@ import tech.izak.Microservice.User.UserRepository;
 public class ApplicationConfig {
 
   private final UserRepository userRepository;
+  private UserDetailsService userService;
+  private PasswordEncoder passwordEncoder;
 
   public ApplicationConfig(UserRepository userRepository) {
     this.userRepository = userRepository;
