@@ -3,8 +3,11 @@ package tech.izak.Microservice.configuration;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import tech.izak.Microservice.User.Enum.Auth;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
@@ -16,7 +19,9 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-  private final String SECRET_KEY="MFqtafUPOSjDhDCKM6gubnIyf1+BNwEBQpCMMfFGfR9URDLIgJIOCPCjC3WiYzGO";
+
+  @Value("${secret_key}")
+  private  String SECRET_KEY;
   public String extractUsername(String token) {
     return extractClaim(token ,Claims::getSubject);
   }
@@ -28,12 +33,16 @@ public class JwtService {
 
 //  extract using the userDetails
   public String generateToken(UserDetails userDetails){
-    return generateToken(new HashMap<>(),userDetails);
+    return generateTokenUserDetails(new HashMap<>(),userDetails);
   }
 
-  public String generateToken(
+  public String generateTokenUserDetails(
         Map<String ,Object> extraClaims, UserDetails userDetails
   ){
+    extraClaims.put("roles", userDetails.getAuthorities().stream()
+          .map(GrantedAuthority::getAuthority)
+          .toList());
+
     return Jwts.builder()
           .claims(extraClaims)
           .subject(userDetails.getUsername())

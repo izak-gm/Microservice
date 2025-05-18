@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import tech.izak.Microservice.User.Enum.Auth;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,7 +28,8 @@ public class User implements UserDetails {
   @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
         generator = "user_sequence"
-  )  private int id;
+  )
+  private int id;
   private String firstname;
   private String lastname;
   private String password;
@@ -37,8 +39,10 @@ public class User implements UserDetails {
   private String email;
   @Enumerated(EnumType.STRING)
   private Auth auth;
-  private final boolean isEnabled=true;
-  private final boolean isAccountNonLocked=true;
+  private  boolean isEnabled=true;
+  private  boolean isAccountNonLocked=true;
+  private  boolean isCredentialsNonExpired=true;
+  private  boolean isAccountNonExpired=true;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

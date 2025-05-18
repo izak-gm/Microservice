@@ -27,7 +27,6 @@ public class AuthenticationController {
   public ResponseEntity<AuthenticationResponse> authenticate(
         @RequestBody AuthenticateRequest authenticateRequest
   ){
-//    String token =
     return ResponseEntity.ok(authenticationService.authenticate(authenticateRequest));
   }
 }

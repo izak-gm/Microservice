@@ -24,7 +24,7 @@ public class SecurityConfiguration {
 
   private static final String [] WHITE_LIST_URL={
         "/api/v1/auth/register",
-        "/api/v1/auth/login"
+        "/api/v1/auth/login",
   };
 
   @Bean
@@ -32,8 +32,7 @@ public class SecurityConfiguration {
     return httpSecurity
           .csrf(AbstractHttpConfigurer::disable)
           .authorizeHttpRequests(auth ->auth
-                .requestMatchers(WHITE_LIST_URL)
-                .permitAll()
+                .requestMatchers(WHITE_LIST_URL).permitAll()
                 .anyRequest().authenticated()
           )
           .sessionManagement(session ->session
@@ -42,8 +41,5 @@ public class SecurityConfiguration {
           .authenticationProvider(authenticationProvider)
           .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
           .build();
-//    return httpSecurity.build();
   }
-
-
 }

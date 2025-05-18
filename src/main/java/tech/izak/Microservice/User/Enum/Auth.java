@@ -1,4 +1,4 @@
-package tech.izak.Microservice.User;
+package tech.izak.Microservice.User.Enum;
 
 public enum Auth {
   SuperAdmin,
