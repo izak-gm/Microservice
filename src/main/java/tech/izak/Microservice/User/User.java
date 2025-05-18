@@ -5,10 +5,12 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import tech.izak.Microservice.Loan.Loan;
 import tech.izak.Microservice.User.Enum.Auth;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -39,6 +41,8 @@ public class User implements UserDetails {
   private String email;
   @Enumerated(EnumType.STRING)
   private Auth auth;
+  @OneToMany(mappedBy = "user")
+  private Set<Loan> loans;
   private  boolean isEnabled=true;
   private  boolean isAccountNonLocked=true;
   private  boolean isCredentialsNonExpired=true;

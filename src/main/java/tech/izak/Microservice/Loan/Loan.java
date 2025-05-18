@@ -21,13 +21,12 @@ public class Loan {
         generator = "Loan_sequence"
   )
 
-    private Integer id;
-//    @OneToOne
-//    @JoinColumn(name = "loan" ,referencedColumnName = "loan")
-    private User userid;
-    @Column
+  private Integer id;
+  @ManyToOne()
+  private User user;
+  @Column
   private Integer principle_amount;
-    @Column
+  @Column
   private Double processing_fee;
   @Column
   private Double outstanding_balance;

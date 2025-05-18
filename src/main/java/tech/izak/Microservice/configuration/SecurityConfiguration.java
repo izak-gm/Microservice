@@ -33,6 +33,7 @@ public class SecurityConfiguration {
           .csrf(AbstractHttpConfigurer::disable)
           .authorizeHttpRequests(auth ->auth
                 .requestMatchers(WHITE_LIST_URL).permitAll()
+                .requestMatchers("/loan/apply").hasRole("User")
                 .anyRequest().authenticated()
           )
           .sessionManagement(session ->session
