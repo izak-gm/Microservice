@@ -1,10 +1,10 @@
-package tech.izak.Microservice.Loan;
+package tech.izak.Microservice.loan.enity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import tech.izak.Microservice.Loan.Enum.STATUS;
-import tech.izak.Microservice.Loan.Enum.TYPE;
-import tech.izak.Microservice.User.User;
+import tech.izak.Microservice.loan.Enum.STATUS;
+import tech.izak.Microservice.loan.Enum.TYPE;
+import tech.izak.Microservice.User.entity.User;
 
 @Entity
 @Data
@@ -18,7 +18,7 @@ public class Loan {
   )
   @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
-        generator = "Loan_sequence"
+        generator = "loan_sequence"
   )
 
   private Integer id;
@@ -34,5 +34,4 @@ public class Loan {
   private TYPE type;
   @Enumerated(EnumType.STRING)
   private STATUS status;
-
 }

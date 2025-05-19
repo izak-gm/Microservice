@@ -1,7 +1,10 @@
-package tech.izak.Microservice.Loan;
+package tech.izak.Microservice.loan.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import tech.izak.Microservice.loan.enity.Loan;
+import tech.izak.Microservice.loan.dto.LoanDto;
+import tech.izak.Microservice.loan.repository.LoanRepository;
 
 @Service
 public class LoanService {

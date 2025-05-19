@@ -1,11 +1,11 @@
-package tech.izak.Microservice.User;
+package tech.izak.Microservice.User.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import tech.izak.Microservice.Loan.Loan;
+import tech.izak.Microservice.loan.enity.Loan;
 import tech.izak.Microservice.User.Enum.Auth;
 
 import java.util.Collection;
@@ -15,8 +15,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Builder
 @Table(name = "_user")
 public class User implements UserDetails {

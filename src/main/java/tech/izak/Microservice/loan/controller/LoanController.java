@@ -1,8 +1,8 @@
-package tech.izak.Microservice.Loan;
+package tech.izak.Microservice.loan.controller;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.izak.Microservice.loan.dto.LoanDto;
+import tech.izak.Microservice.loan.service.LoanService;
 
 @RestController
 @RequestMapping( "loan")

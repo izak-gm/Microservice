@@ -25,6 +25,7 @@ public class SecurityConfiguration {
   private static final String [] WHITE_LIST_URL={
         "/api/v1/auth/register",
         "/api/v1/auth/login",
+        "/loan/apply"
   };
 
   @Bean
@@ -33,7 +34,7 @@ public class SecurityConfiguration {
           .csrf(AbstractHttpConfigurer::disable)
           .authorizeHttpRequests(auth ->auth
                 .requestMatchers(WHITE_LIST_URL).permitAll()
-                .requestMatchers("/loan/apply").hasRole("User")
+                // .requestMatchers("/loan/apply").hasRole("User")
                 .anyRequest().authenticated()
           )
           .sessionManagement(session ->session

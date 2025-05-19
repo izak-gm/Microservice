@@ -1,4 +1,4 @@
-package tech.izak.Microservice.auth;
+package tech.izak.Microservice.auth.dto;
 
 import lombok.*;
 

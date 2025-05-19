@@ -1,4 +1,4 @@
-package tech.izak.Microservice.auth;
+package tech.izak.Microservice.auth.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -6,8 +6,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import tech.izak.Microservice.User.Enum.Auth;
-import tech.izak.Microservice.User.User;
-import tech.izak.Microservice.User.UserRepository;
+import tech.izak.Microservice.User.entity.User;
+import tech.izak.Microservice.User.repository.UserRepository;
+import tech.izak.Microservice.auth.dto.AuthenticateRequest;
+import tech.izak.Microservice.auth.dto.AuthenticationResponse;
+import tech.izak.Microservice.auth.dto.RegisterRequest;
 import tech.izak.Microservice.configuration.JwtService;
 
 @Service
