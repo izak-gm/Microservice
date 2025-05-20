@@ -1,5 +1,6 @@
 package tech.izak.Microservice.loan.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import tech.izak.Microservice.loan.enity.Loan;
@@ -7,15 +8,12 @@ import tech.izak.Microservice.loan.dto.LoanDto;
 import tech.izak.Microservice.loan.repository.LoanRepository;
 
 @Service
+@AllArgsConstructor
 public class LoanService {
 
   public final LoanRepository loanRepository;
 
-  public LoanService(LoanRepository loanRepository) {
-    this.loanRepository = loanRepository;
-  }
-
-  public LoanDto applyLoan(@RequestBody LoanDto loanDto){
+  public LoanDto applyLoan(LoanDto loanDto){
     Loan loan=new Loan();
 
     loanRepository.save(loan);

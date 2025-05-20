@@ -23,6 +23,7 @@ public class RepaymentCycle {
   )
   private Long id;
   private Integer durationInDays;
+  private String name;
   @OneToMany(mappedBy = "repaymentCycles")
   private Set<LoanPlan> loanPlans;
 }
