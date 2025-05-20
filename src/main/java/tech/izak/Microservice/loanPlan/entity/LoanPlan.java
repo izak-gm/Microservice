@@ -9,8 +9,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Table(name = "loanPlan")
 
@@ -22,14 +22,15 @@ public class LoanPlan {
 
       allocationSize = 1
 )
-@GeneratedValue(
+  @GeneratedValue(
       strategy = GenerationType.SEQUENCE,
       generator = "loanPlan_sequence"
-)
- private Long id;
+  )
+  private Long id;
+  private String name;
   private  Integer durationInDays;
   private Integer processingFee;
-  private Integer fine;
+  private Double fine;
   @ManyToOne()
   private RepaymentCycle repaymentCycles;
 }

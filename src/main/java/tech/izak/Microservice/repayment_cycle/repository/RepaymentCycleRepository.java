@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface RepaymentCycleRepository extends JpaRepository<RepaymentCycle ,Long> {
-  @Override
-  @NotNull
-  Optional<RepaymentCycle> findById(@NotNull Long id);
+
+//  Optional<RepaymentCycle> findById( Long id);
 }

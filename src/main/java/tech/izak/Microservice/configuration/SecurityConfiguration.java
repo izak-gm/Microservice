@@ -26,7 +26,8 @@ public class SecurityConfiguration {
         "/api/v1/auth/register",
         "/api/v1/auth/login",
         "/loan/apply",
-        "/api/v1/repayment-cycle/create"
+        "/api/v1/repayment-cycle/create",
+        "/api/v1/loan-plan/create"
   };
 
   @Bean
