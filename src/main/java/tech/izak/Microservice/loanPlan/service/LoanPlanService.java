@@ -14,9 +14,9 @@ public class LoanPlanService {
   private final LoanPlanRepository loanPlanRepository;
   private final RepaymentCycleRepository repaymentCycleRepository;
 
-  public LoanPlanRecord createLoanPlan(LoanPlanRecord loanPlanRecord ,Long repaymentCyclesId){
-    RepaymentCycle repaymentCycle=repaymentCycleRepository.findById(repaymentCyclesId)
-          .orElseThrow(()->new RuntimeException("Repayment Cycle not found with id :"+repaymentCyclesId ));
+  public LoanPlanRecord createLoanPlan(LoanPlanRecord loanPlanRecord){
+    RepaymentCycle repaymentCycle=repaymentCycleRepository.findById(loanPlanRecord.repaymentCycleId())
+          .orElseThrow(()->new RuntimeException("Repayment Cycle not found with id :"+loanPlanRecord.repaymentCycleId() ));
 
     LoanPlan loanPlan=new LoanPlan();
 
@@ -31,7 +31,8 @@ public class LoanPlanService {
           saveLoanPlan.getDurationInDays(),
           saveLoanPlan.getProcessingFee(),
           saveLoanPlan.getName(),
-          saveLoanPlan.getFine()
+          saveLoanPlan.getFine(),
+          saveLoanPlan.getRepaymentCycles().getId()
     );
   }
 }

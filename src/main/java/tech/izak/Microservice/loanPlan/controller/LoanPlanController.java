@@ -17,8 +17,8 @@ public class LoanPlanController {
   private final LoanPlanService loanPlanService;
 
   @PostMapping("create")
-  public ResponseEntity<LoanPlanRecord> createLoanPlan(@RequestBody LoanPlanRecord loanPlanRecord, @RequestParam Long repaymentCyclesId){
-    LoanPlanRecord createLoanPlan=loanPlanService.createLoanPlan(loanPlanRecord,repaymentCyclesId);
+  public ResponseEntity<LoanPlanRecord> createLoanPlan(@RequestBody LoanPlanRecord loanPlanRecord){
+    LoanPlanRecord createLoanPlan=loanPlanService.createLoanPlan(loanPlanRecord);
     return ResponseEntity.ok(createLoanPlan);
   }
 }
