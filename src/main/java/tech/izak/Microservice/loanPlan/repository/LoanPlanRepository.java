@@ -9,7 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface LoanPlanRepository extends JpaRepository<LoanPlan,Long> {
-  @Override
-  @NotNull
-  Optional<LoanPlan> findById(@NotNull Long id);
 }

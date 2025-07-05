@@ -1,21 +1,19 @@
 package tech.izak.Microservice.loan.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import tech.izak.Microservice.loan.dto.LoanDto;
+import tech.izak.Microservice.loan.dto.LoanRecord;
 import tech.izak.Microservice.loan.service.LoanService;
 
 @RestController
-@RequestMapping( "loan")
+@RequestMapping( "api/v1/loan")
+@RequiredArgsConstructor
 public class LoanController {
 
   public final LoanService loanService;
 
-  public LoanController(LoanService loanService) {
-    this.loanService = loanService;
-  }
-
  @PostMapping("apply")
-  public LoanDto applyLoan(@RequestBody LoanDto loanDto){
-    return loanService.applyLoan(loanDto);
+  public LoanRecord applyLoan(@RequestBody LoanRecord loanRecord){
+    return loanService.applyLoan(loanRecord);
   }
 }

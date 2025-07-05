@@ -1,5 +1,6 @@
 package tech.izak.Microservice.auth.service;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,20 +15,13 @@ import tech.izak.Microservice.auth.dto.RegisterRequest;
 import tech.izak.Microservice.configuration.JwtService;
 
 @Service
-
+@RequiredArgsConstructor
 public class AuthenticationService {
   private static final org.apache.logging.log4j.Logger log = LogManager.getLogger(AuthenticationService.class);
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
-
-  public AuthenticationService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
-    this.userRepository = userRepository;
-    this.passwordEncoder = passwordEncoder;
-    this.jwtService = jwtService;
-    this.authenticationManager = authenticationManager;
-  }
 
   public AuthenticationResponse register(RegisterRequest registerRequest) {
 
@@ -36,7 +30,7 @@ public class AuthenticationService {
           .lastname(registerRequest.getLastname())
           .email(registerRequest.getEmail())
           .password(passwordEncoder.encode(registerRequest.getPassword()))
-          .auth(Auth.User)
+          .auth(Auth.USER)
           .build();
     userRepository.save(user);
     log.info("user created");

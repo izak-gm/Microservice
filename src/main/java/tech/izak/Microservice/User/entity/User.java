@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import tech.izak.Microservice.loan.enity.Loan;
 import tech.izak.Microservice.User.Enum.Auth;
+import tech.izak.Microservice.repayment_cycle.entity.RepaymentCycle;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Table(name = "_user")
 public class User implements UserDetails {
@@ -31,7 +32,7 @@ public class User implements UserDetails {
         strategy = GenerationType.SEQUENCE,
         generator = "user_sequence"
   )
-  private int id;
+  private Long id;
   private String firstname;
   private String lastname;
   private String password;
@@ -39,10 +40,13 @@ public class User implements UserDetails {
   private String gender;
   private String dob;
   private String email;
+
   @Enumerated(EnumType.STRING)
   private Auth auth;
-  @OneToMany(mappedBy = "user")
-  private Set<Loan> loans;
+
+  @ManyToOne()
+  private RepaymentCycle repaymentCycles;
+
   private  boolean isEnabled=true;
   private  boolean isAccountNonLocked=true;
   private  boolean isCredentialsNonExpired=true;
@@ -50,7 +54,7 @@ public class User implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(auth.name()));
+    return List.of(new SimpleGrantedAuthority("ROLE_" + auth.name()));
   }
 
   @Override

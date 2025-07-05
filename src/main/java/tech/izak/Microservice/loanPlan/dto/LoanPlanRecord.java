@@ -1,9 +1,13 @@
 package tech.izak.Microservice.loanPlan.dto;
 
-public record LoanPlanRecord(Integer durationInDays,
+import tech.izak.Microservice.repayment_cycle.entity.RepaymentCycle;
+
+public record LoanPlanRecord(Long id,
+                             Integer durationInDays,
                              Integer processingFee,
                              String name,
                              Double fine,
-                             Long repaymentCycleId
+                             RepaymentCycle repaymentCycle
                              ) {
+
 }

@@ -30,6 +30,7 @@ public class LoanPlan {
   private String name;
   private  Integer durationInDays;
   private Integer processingFee;
+  private Double interestRate;
   private Double fine;
   @ManyToOne()
   private RepaymentCycle repaymentCycles;

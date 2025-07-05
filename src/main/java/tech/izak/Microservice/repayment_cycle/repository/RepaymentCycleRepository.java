@@ -9,6 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface RepaymentCycleRepository extends JpaRepository<RepaymentCycle ,Long> {
-
-//  Optional<RepaymentCycle> findById( Long id);
 }

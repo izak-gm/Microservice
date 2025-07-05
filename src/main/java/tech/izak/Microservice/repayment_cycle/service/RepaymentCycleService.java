@@ -14,7 +14,7 @@ public class RepaymentCycleService {
   public RepaymentCycleRecord createRepaymentCycle(RepaymentCycleRecord repaymentCycleRecord){
     RepaymentCycle repaymentCycle=new RepaymentCycle();
     repaymentCycle.setName(repaymentCycleRecord.name());
-    repaymentCycle.setDurationInDays(repaymentCycleRecord.durationInDays());
+    repaymentCycle.setDurationInDays(repaymentCycleRecord.days());
 
     RepaymentCycle saveRepaymentCycle=repaymentCycleRepository.save(repaymentCycle);
     return new RepaymentCycleRecord(

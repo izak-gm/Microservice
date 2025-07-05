@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import tech.izak.Microservice.loanPlan.dto.LoanPlanRecord;
 import tech.izak.Microservice.loanPlan.entity.LoanPlan;
 import tech.izak.Microservice.loanPlan.repository.LoanPlanRepository;
+import tech.izak.Microservice.loanPlan.mapper.LoanPlanMapper;
 import tech.izak.Microservice.repayment_cycle.entity.RepaymentCycle;
 import tech.izak.Microservice.repayment_cycle.repository.RepaymentCycleRepository;
 
@@ -12,27 +13,17 @@ import tech.izak.Microservice.repayment_cycle.repository.RepaymentCycleRepositor
 @AllArgsConstructor
 public class LoanPlanService {
   private final LoanPlanRepository loanPlanRepository;
-  private final RepaymentCycleRepository repaymentCycleRepository;
+  private LoanPlanMapper mapper;
 
-  public LoanPlanRecord createLoanPlan(LoanPlanRecord loanPlanRecord){
-    RepaymentCycle repaymentCycle=repaymentCycleRepository.findById(loanPlanRecord.repaymentCycleId())
-          .orElseThrow(()->new RuntimeException("Repayment Cycle not found with id :"+loanPlanRecord.repaymentCycleId() ));
-
-    LoanPlan loanPlan=new LoanPlan();
-
-    loanPlan.setName(loanPlanRecord.name());
-    loanPlan.setFine(loanPlanRecord.fine());
-    loanPlan.setProcessingFee(loanPlanRecord.processingFee());
-    loanPlan.setDurationInDays(loanPlanRecord.durationInDays());
-    loanPlan.setRepaymentCycles(repaymentCycle);
-
-    LoanPlan saveLoanPlan=loanPlanRepository.save(loanPlan);
+  public LoanPlanRecord createLoanPlan(LoanPlanRecord record){
+    LoanPlan saveLoanPlan=loanPlanRepository.save(mapper.toLoanplan(record));
     return new LoanPlanRecord(
+          saveLoanPlan.getId(),
           saveLoanPlan.getDurationInDays(),
           saveLoanPlan.getProcessingFee(),
           saveLoanPlan.getName(),
           saveLoanPlan.getFine(),
-          saveLoanPlan.getRepaymentCycles().getId()
+          saveLoanPlan.getRepaymentCycles()
     );
   }
 }

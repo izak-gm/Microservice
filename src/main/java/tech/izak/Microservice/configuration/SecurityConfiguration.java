@@ -13,21 +13,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfiguration {
   private final JwtAuthenticationFilter jwtAuthFilter;
   private  final AuthenticationProvider authenticationProvider;
 
-  public SecurityConfiguration(JwtAuthenticationFilter jwtAuthFilter, AuthenticationProvider authenticationProvider) {
-    this.jwtAuthFilter = jwtAuthFilter;
-    this.authenticationProvider = authenticationProvider;
-  }
-
   private static final String [] WHITE_LIST_URL={
-        "/api/v1/auth/register",
-        "/api/v1/auth/login",
-        "/loan/apply",
-        "/api/v1/repayment-cycle/create",
-        "/api/v1/loan-plan/create"
+        "/api/v1/auth/**",
+  };
+  private static final String [] WHITE_LIST2_URL={
+        "api/v1/*/**"
   };
 
   @Bean
@@ -36,7 +31,7 @@ public class SecurityConfiguration {
           .csrf(AbstractHttpConfigurer::disable)
           .authorizeHttpRequests(auth ->auth
                 .requestMatchers(WHITE_LIST_URL).permitAll()
-                // .requestMatchers("/loan/apply").hasRole("User")
+                 .requestMatchers(WHITE_LIST2_URL).hasRole("USER")
                 .anyRequest().authenticated()
           )
           .sessionManagement(session ->session
